@@ -1,7 +1,7 @@
-import Header from "@/components/header"
-import Footer from "@/components/footer"
-import PropertyList from "@/components/property-list"
-import PropertySearch from "@/components/property-search"
+import Header from "@/components/header";
+import Footer from "@/components/footer";
+import PropertyList from "@/components/property-list";
+import PropertySearch from "@/components/property-search";
 
 export default function PropertiesPage() {
   return (
@@ -16,11 +16,12 @@ export default function PropertiesPage() {
           <PropertySearch className="mb-8" />
 
           {/* Résultats */}
-          <PropertyList showPagination={true} />
+          {/* <PropertyList showPagination={true} /> */}
+          <PropertyList filters={{ status: "TOUTES" }} showPagination={true} />
         </div>
       </div>
 
       <Footer />
     </>
-  )
+  );
 }
