@@ -16,8 +16,8 @@ export default function PropertiesPage() {
           <PropertySearch className="mb-8" />
 
           {/* Résultats */}
-          {/* <PropertyList showPagination={true} /> */}
-          <PropertyList filters={{ status: "TOUTES" }} showPagination={true} />
+          <PropertyList showPagination={true} />
+          {/* <PropertyList filters={{ status: "TOUTES" }} showPagination={true} /> */}
         </div>
       </div>
 

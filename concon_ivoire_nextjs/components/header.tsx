@@ -107,7 +107,14 @@ const Header = () => {
             >
               Accueil
             </Link>
-            <DropdownMenuCustom
+            <Link
+              className="flex items-center font-medium hover:text-primary"
+              href="/about"
+            >
+              À propos
+            </Link>
+
+            {/* <DropdownMenuCustom
               trigger={
                 <div className="flex items-center font-medium hover:text-primary transition-colors duration-200">
                   À propos <ChevronDown size={16} className="ml-1" />
@@ -129,7 +136,7 @@ const Header = () => {
                   Notre histoire
                 </Link>
               </DropdownMenuItem>
-            </DropdownMenuCustom>
+            </DropdownMenuCustom> */}
 
             <DropdownMenuCustom
               trigger={
@@ -153,15 +160,15 @@ const Header = () => {
                   À louer
                 </Link>
               </DropdownMenuItem>
-              <DropdownMenuSeparator />
+              {/* <DropdownMenuSeparator />
               <DropdownMenuItem>
                 <Link href="/properties/map-view" className="w-full">
                   Vue Carte
                 </Link>
-              </DropdownMenuItem>
+              </DropdownMenuItem> */}
             </DropdownMenuCustom>
 
-            <DropdownMenuCustom
+            {/* <DropdownMenuCustom
               trigger={
                 <div className="flex items-center font-medium hover:text-primary transition-colors duration-200">
                   Actualités <ChevronDown size={16} className="ml-1" />
@@ -178,9 +185,16 @@ const Header = () => {
                   Liste d'actualités
                 </Link>
               </DropdownMenuItem>
-            </DropdownMenuCustom>
+            </DropdownMenuCustom> */}
 
-            <DropdownMenuCustom
+            <Link
+              className="flex items-center font-medium hover:text-primary"
+              href="/faq"
+            >
+              Gerer mon bien
+            </Link>
+
+            {/* <DropdownMenuCustom
               trigger={
                 <div className="flex items-center font-medium hover:text-primary transition-colors duration-200">
                   Pages <ChevronDown size={16} className="ml-1" />
@@ -202,7 +216,7 @@ const Header = () => {
                   FAQ
                 </Link>
               </DropdownMenuItem>
-            </DropdownMenuCustom>
+            </DropdownMenuCustom> */}
 
             <Link
               href="/contact"

@@ -1,17 +1,26 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { MapPin, Camera, Bed, Bath, Square, Heart, Share2, Eye } from "lucide-react"
-import { motion } from "framer-motion"
-import { Modal } from "./ui/modal"
-import { Button } from "@/components/ui/button"
-import { ImageGallery } from "./ui/image-gallery"
-import { ScrollReveal } from "./ui/scroll-reveal"
+import { useState } from "react";
+import {
+  MapPin,
+  Camera,
+  Bed,
+  Bath,
+  Square,
+  Heart,
+  Share2,
+  Eye,
+} from "lucide-react";
+import { motion } from "framer-motion";
+import { Modal } from "./ui/modal";
+import { Button } from "@/components/ui/button";
+import { ImageGallery } from "./ui/image-gallery";
+import { ScrollReveal } from "./ui/scroll-reveal";
 
 const FeaturedListings = () => {
-  const [selectedProperty, setSelectedProperty] = useState<any>(null)
-  const [isQuickViewOpen, setIsQuickViewOpen] = useState(false)
-  const [favorites, setFavorites] = useState<number[]>([])
+  const [selectedProperty, setSelectedProperty] = useState<any>(null);
+  const [isQuickViewOpen, setIsQuickViewOpen] = useState(false);
+  const [favorites, setFavorites] = useState<number[]>([]);
 
   const properties = [
     {
@@ -86,28 +95,30 @@ const FeaturedListings = () => {
         email: "william@example.com",
       },
     },
-  ]
+  ];
 
   const toggleFavorite = (id: number) => {
     setFavorites((prev) => {
       if (prev.includes(id)) {
-        return prev.filter((item) => item !== id)
+        return prev.filter((item) => item !== id);
       } else {
-        return [...prev, id]
+        return [...prev, id];
       }
-    })
-  }
+    });
+  };
 
   const openQuickView = (property: any) => {
-    setSelectedProperty(property)
-    setIsQuickViewOpen(true)
-  }
+    setSelectedProperty(property);
+    setIsQuickViewOpen(true);
+  };
 
   return (
     <section className="py-16 md:py-24">
       <div className="container-custom">
         <ScrollReveal>
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">Propriétés en Vedette</h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">
+            Propriétés en Vedette
+          </h2>
         </ScrollReveal>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -129,14 +140,20 @@ const FeaturedListings = () => {
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.2 }}
-                      className={property.status === "À LOUER" ? "badge-rent" : "badge-sale"}
+                      className={
+                        property.status === "À LOUER"
+                          ? "badge-rent"
+                          : "badge-sale"
+                      }
                     >
                       {property.status}
                     </motion.span>
                   </div>
                   <div className="absolute bottom-4 left-4 flex items-center space-x-2">
                     <MapPin className="h-4 w-4 text-white" />
-                    <span className="text-white text-sm">{property.location}</span>
+                    <span className="text-white text-sm">
+                      {property.location}
+                    </span>
                   </div>
                   <div className="absolute bottom-4 right-4 bg-white rounded-full p-2">
                     <Camera className="h-4 w-4 text-gray-600" />
@@ -161,7 +178,9 @@ const FeaturedListings = () => {
                       >
                         <Heart
                           className={`h-5 w-5 ${
-                            favorites.includes(property.id) ? "text-red-500 fill-red-500" : "text-primary"
+                            favorites.includes(property.id)
+                              ? "text-red-500 fill-red-500"
+                              : "text-primary"
                           }`}
                         />
                       </motion.button>
@@ -180,7 +199,9 @@ const FeaturedListings = () => {
                   <h3 className="text-xl font-bold mb-2">{property.title}</h3>
                   <p className="text-primary font-bold text-xl mb-4">
                     {property.price}
-                    <span className="text-gray-500 text-sm font-normal">{property.period}</span>
+                    <span className="text-gray-500 text-sm font-normal">
+                      {property.period}
+                    </span>
                   </p>
                   <p className="text-gray-600 mb-4">{property.description}</p>
 
@@ -200,15 +221,15 @@ const FeaturedListings = () => {
                   </div>
 
                   <div className="flex items-center justify-between mt-6">
-                    <div className="flex items-center">
+                    {/* <div className="flex items-center">
                       <img
                         src={property.agent.image || "/placeholder.svg"}
                         alt={property.agent.name}
                         className="w-10 h-10 rounded-full mr-3"
                       />
                       <span className="font-medium">{property.agent.name}</span>
-                    </div>
-                    <div className="flex space-x-2">
+                    </div> */}
+                    {/* <div className="flex space-x-2">
                       <button className="text-gray-500 hover:text-primary transition-colors">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -217,7 +238,12 @@ const FeaturedListings = () => {
                           viewBox="0 0 24 24"
                           stroke="currentColor"
                         >
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 8h16M4 16h16" />
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M4 8h16M4 16h16"
+                          />
                         </svg>
                       </button>
                       <button
@@ -229,7 +255,11 @@ const FeaturedListings = () => {
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           className="h-5 w-5"
-                          fill={favorites.includes(property.id) ? "currentColor" : "none"}
+                          fill={
+                            favorites.includes(property.id)
+                              ? "currentColor"
+                              : "none"
+                          }
                           viewBox="0 0 24 24"
                           stroke="currentColor"
                         >
@@ -257,7 +287,7 @@ const FeaturedListings = () => {
                           />
                         </svg>
                       </button>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </motion.div>
@@ -266,33 +296,54 @@ const FeaturedListings = () => {
         </div>
 
         <div className="flex justify-center mt-12">
-          <Button className="bg-primary hover:bg-primary-dark">Voir Toutes les Propriétés</Button>
+          <Button className="bg-primary hover:bg-primary-dark">
+            Voir Toutes les Propriétés
+          </Button>
         </div>
       </div>
 
       {/* Quick View Modal */}
-      <Modal isOpen={isQuickViewOpen} onClose={() => setIsQuickViewOpen(false)} size="xl">
+      <Modal
+        isOpen={isQuickViewOpen}
+        onClose={() => setIsQuickViewOpen(false)}
+        size="xl"
+      >
         {selectedProperty && (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div>
-              <ImageGallery images={selectedProperty.images} alt={selectedProperty.title} />
+              <ImageGallery
+                images={selectedProperty.images}
+                alt={selectedProperty.title}
+              />
             </div>
             <div>
               <div className="mb-2">
-                <span className={selectedProperty.status === "À LOUER" ? "badge-rent" : "badge-sale"}>
+                <span
+                  className={
+                    selectedProperty.status === "À LOUER"
+                      ? "badge-rent"
+                      : "badge-sale"
+                  }
+                >
                   {selectedProperty.status}
                 </span>
               </div>
-              <h2 className="text-2xl font-bold mb-2">{selectedProperty.title}</h2>
+              <h2 className="text-2xl font-bold mb-2">
+                {selectedProperty.title}
+              </h2>
               <div className="flex items-center text-gray-500 mb-4">
                 <MapPin size={16} className="mr-1" />
                 <span>{selectedProperty.location}</span>
               </div>
               <p className="text-primary font-bold text-2xl mb-4">
                 {selectedProperty.price}
-                <span className="text-gray-500 text-sm font-normal">{selectedProperty.period}</span>
+                <span className="text-gray-500 text-sm font-normal">
+                  {selectedProperty.period}
+                </span>
               </p>
-              <p className="text-gray-600 mb-6">{selectedProperty.description}</p>
+              <p className="text-gray-600 mb-6">
+                {selectedProperty.description}
+              </p>
 
               <div className="grid grid-cols-3 gap-4 mb-6">
                 <div className="bg-gray-50 p-3 rounded-md text-center">
@@ -302,7 +353,9 @@ const FeaturedListings = () => {
                 </div>
                 <div className="bg-gray-50 p-3 rounded-md text-center">
                   <Bath className="mx-auto mb-1 text-primary" size={20} />
-                  <span className="block text-sm text-gray-500">Salles de bain</span>
+                  <span className="block text-sm text-gray-500">
+                    Salles de bain
+                  </span>
                   <span className="font-bold">{selectedProperty.baths}</span>
                 </div>
                 <div className="bg-gray-50 p-3 rounded-md text-center">
@@ -322,19 +375,29 @@ const FeaturedListings = () => {
                   />
                   <div>
                     <p className="font-medium">{selectedProperty.agent.name}</p>
-                    <p className="text-gray-500 text-sm">{selectedProperty.agent.phone}</p>
+                    <p className="text-gray-500 text-sm">
+                      {selectedProperty.agent.phone}
+                    </p>
                   </div>
                 </div>
               </div>
 
               <div className="flex space-x-3">
-                <Button className="bg-primary hover:bg-primary-dark flex-1" onClick={() => setIsQuickViewOpen(false)}>
+                <Button
+                  className="bg-primary hover:bg-primary-dark flex-1"
+                  onClick={() => setIsQuickViewOpen(false)}
+                >
                   Voir les Détails
                 </Button>
-                <Button variant="outline" className="flex-1" onClick={() => toggleFavorite(selectedProperty.id)}>
+                <Button
+                  variant="outline"
+                  className="flex-1"
+                  onClick={() => toggleFavorite(selectedProperty.id)}
+                >
                   {favorites.includes(selectedProperty.id) ? (
                     <>
-                      <Heart className="mr-2 h-4 w-4 text-red-500 fill-red-500" /> Sauvegardé
+                      <Heart className="mr-2 h-4 w-4 text-red-500 fill-red-500" />{" "}
+                      Sauvegardé
                     </>
                   ) : (
                     <>
@@ -348,7 +411,7 @@ const FeaturedListings = () => {
         )}
       </Modal>
     </section>
-  )
-}
+  );
+};
 
-export default FeaturedListings
+export default FeaturedListings;

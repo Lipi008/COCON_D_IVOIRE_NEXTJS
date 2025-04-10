@@ -18,6 +18,7 @@ import {
   mockStats,
   mockServices,
 } from "./mock-data";
+import { Console } from "console";
 
 // Configuration de l'API
 const API_CONFIG = {
@@ -33,7 +34,7 @@ const API_CONFIG = {
 class ApiService {
   private apiUrl: string;
   private useMocks: boolean;
-  private apiAvailable = true;
+  private apiAvailable = false;
 
   constructor() {
     this.apiUrl = API_CONFIG.BASE_URL;
@@ -51,7 +52,6 @@ class ApiService {
     if (this.useMocks || !this.apiAvailable) {
       return this.getMockData<T>(endpoint);
     }
-
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), API_CONFIG.TIMEOUT);
 
@@ -213,6 +213,7 @@ class ApiService {
       const id = endpoint.match(/\/properties\/(\d+)/)?.[1];
       if (id) {
         const property = mockProperties.find((p) => p.id.toString() === id);
+
         return Promise.resolve({
           success: true,
           data: property as unknown as T,
@@ -338,25 +339,27 @@ class ApiService {
    * Vérifie si l'API est disponible
    */
   public async checkApiAvailability(): Promise<boolean> {
-    try {
-      const response = await fetch(`${this.apiUrl}/health`, {
-        method: "GET",
-        headers: { "Content-Type": "application/json" },
-        signal: AbortSignal.timeout(5000), // 5 secondes max
-      });
+    // try {
+    //   const response = await fetch(`${this.apiUrl}/health`, {
+    //     method: "GET",
+    //     headers: { "Content-Type": "application/json" },
+    //     signal: AbortSignal.timeout(5000), // 5 secondes max
+    //   });
 
-      this.apiAvailable = response.ok;
-      return this.apiAvailable;
-    } catch (error) {
-      console.warn("API health check failed:", error);
-      this.apiAvailable = false;
-      return false;
-    }
+    //   this.apiAvailable = response.ok;
+    //   return this.apiAvailable;
+    // } catch (error) {
+    //   console.warn("API health check failed:", error);
+    //   this.apiAvailable = false;
+    //   return false;
+    // }
+    return false;
   }
 
   /**
    * Récupère toutes les propriétés avec filtres optionnels
    */
+
   public async getProperties(
     filters?: PropertyFilters
   ): Promise<ApiResponse<Property[]>> {
@@ -375,8 +378,9 @@ class ApiService {
         endpoint += `?${queryParams.toString()}`;
       }
     }
-
-    return this.fetchApi<Property[]>(endpoint);
+    const result = await this.fetchApi<Property[]>(endpoint);
+    // console.log("Résultat de getProperties :", result);
+    return result;
   }
 
   /**
