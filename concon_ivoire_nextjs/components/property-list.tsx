@@ -243,6 +243,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Bed, Bath, Maximize, MapPin, AlertCircle } from "lucide-react";
 import { Console } from "console";
+import { useMemo } from "react";
 
 interface PropertyListProps {
   filters?: PropertyFilters;
@@ -276,6 +277,9 @@ export default function PropertyList({
   // const data_ = useProperties(currentFilters);
   // console.log(data_);
   // Récupération des données
+
+  const memoizedFilters = useMemo(() => currentFilters, [currentFilters]);
+
   const {
     data,
     pagination = DEFAULT_PAGINATION,
@@ -283,7 +287,7 @@ export default function PropertyList({
     error,
     isUsingMock,
     refetch,
-  } = useProperties(currentFilters);
+  } = useProperties(memoizedFilters);
 
   // Effet pour mettre à jour les filtres
   useEffect(() => {
@@ -382,12 +386,12 @@ export default function PropertyList({
 
       <CardFooter className="border-t p-6 flex justify-between items-center">
         <span className="text-xl font-bold text-primary-DEFAULT">
-          property.price
-          {/* {new Intl.NumberFormat("fr-FR", {
+          {/* property.price */}
+          {new Intl.NumberFormat("fr-FR", {
             style: "currency",
             currency: "EUR",
             maximumFractionDigits: 0,
-          }).format(property.price)} */}
+          }).format(property.price)}
           {property.period && (
             <span className="text-sm font-normal text-gray-500">
               /{property.period}
