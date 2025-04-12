@@ -68,39 +68,6 @@ const Header = () => {
       >
         <div className="container-custom flex justify-between items-center">
           <div className="flex items-center">
-            {/* <Link href="/" className="flex items-center">
-            <motion.div
-              className="text-primary"
-              whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 400, damping: 10 }}
-            >
-              <svg
-                width="40"
-                height="40"
-                viewBox="0 0 40 40"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M35 17.5V35H5V17.5L20 5L35 17.5Z"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  fill="none"
-                />
-                <path
-                  d="M15 25H25V35H15V25Z"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  fill="none"
-                />
-              </svg>
-              
-            </motion.div>
-            <span className="ml-2 text-2xl font-bold text-secondary">
-              Cocon d'ivoire
-            </span>
-          </Link> */}
-
             <Link href="/" className="flex items-center">
               <motion.div
                 className="text-primary"
