@@ -32,6 +32,7 @@ import { useState } from "react";
 // ... autres imports ...
 
 export default function PropertyPage({ params }: { params: { id: string } }) {
+  console.log("Property ID:", params.id);
   return <PropertyDetailsPage id={params.id} />;
 }
 

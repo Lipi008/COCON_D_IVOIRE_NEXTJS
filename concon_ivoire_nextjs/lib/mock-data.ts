@@ -1,4 +1,12 @@
-import type { Property, Agent, Testimonial, ApartmentPlan, Amenity, Stat, Service } from "./types/api-types"
+import type {
+  Property,
+  Agent,
+  Testimonial,
+  ApartmentPlan,
+  Amenity,
+  Stat,
+  Service,
+} from "./types/api-types";
 
 // Données mockées pour les propriétés
 export const mockProperties: Property[] = [
@@ -8,7 +16,7 @@ export const mockProperties: Property[] = [
     description:
       "Belle maison familiale spacieuse au cœur de Westbury. Récemment rénovée avec nouveaux parquets, nouvelle cuisine, nouvelle salle de bain, nouveau toit et nouvelles fenêtres.",
     location: "Paris, France",
-    price: "450,000 €",
+    price: "450000 FCFA",
     images: [
       "/placeholder.svg?height=300&width=400",
       "/placeholder.svg?height=300&width=400",
@@ -20,7 +28,13 @@ export const mockProperties: Property[] = [
     status: "À VENDRE",
     yearBuilt: 2018,
     garage: 1,
-    features: ["Balcon", "Ascenseur", "Sécurité 24/7", "Parking", "Vue dégagée"],
+    features: [
+      "Balcon",
+      "Ascenseur",
+      "Sécurité 24/7",
+      "Parking",
+      "Vue dégagée",
+    ],
     agent: {
       id: 1,
       name: "Sophie Martin",
@@ -35,7 +49,7 @@ export const mockProperties: Property[] = [
     description:
       "Magnifique villa avec piscine et jardin paysager. Parfaite pour une famille à la recherche d'espace et de tranquillité.",
     location: "Nice, France",
-    price: "850,000 €",
+    price: "850000 FCFA",
     images: [
       "/placeholder.svg?height=300&width=400",
       "/placeholder.svg?height=300&width=400",
@@ -47,7 +61,13 @@ export const mockProperties: Property[] = [
     status: "À VENDRE",
     yearBuilt: 2015,
     garage: 2,
-    features: ["Piscine", "Jardin", "Terrasse", "Cuisine équipée", "Climatisation"],
+    features: [
+      "Piscine",
+      "Jardin",
+      "Terrasse",
+      "Cuisine équipée",
+      "Climatisation",
+    ],
     agent: {
       id: 2,
       name: "Jean Dupont",
@@ -74,7 +94,12 @@ export const mockProperties: Property[] = [
     area: "45 m²",
     status: "À LOUER",
     yearBuilt: 2020,
-    features: ["Meublé", "Internet haut débit", "Buanderie", "Proche transports"],
+    features: [
+      "Meublé",
+      "Internet haut débit",
+      "Buanderie",
+      "Proche transports",
+    ],
     agent: {
       id: 3,
       name: "Marie Leroy",
@@ -89,7 +114,7 @@ export const mockProperties: Property[] = [
     description:
       "Charmante maison de campagne avec grand jardin et dépendances. Idéale pour les amoureux de la nature et du calme.",
     location: "Bordeaux, France",
-    price: "320,000 €",
+    price: "320000 FCFA",
     images: [
       "/placeholder.svg?height=300&width=400",
       "/placeholder.svg?height=300&width=400",
@@ -101,7 +126,13 @@ export const mockProperties: Property[] = [
     status: "À VENDRE",
     yearBuilt: 1995,
     garage: 1,
-    features: ["Jardin", "Cheminée", "Cave à vin", "Dépendances", "Terrain 2000m²"],
+    features: [
+      "Jardin",
+      "Cheminée",
+      "Cave à vin",
+      "Dépendances",
+      "Terrain 2000m²",
+    ],
     agent: {
       id: 1,
       name: "Sophie Martin",
@@ -116,7 +147,7 @@ export const mockProperties: Property[] = [
     description:
       "Superbe loft industriel avec de grands volumes et beaucoup de caractère. Idéal pour les amateurs d'architecture contemporaine.",
     location: "Marseille, France",
-    price: "1,800 €",
+    price: "180000 FCFA",
     period: "/mois",
     images: [
       "/placeholder.svg?height=300&width=400",
@@ -128,7 +159,13 @@ export const mockProperties: Property[] = [
     area: "110 m²",
     status: "À LOUER",
     yearBuilt: 2010,
-    features: ["Hauteur sous plafond", "Verrière", "Cuisine ouverte", "Parking", "Sécurisé"],
+    features: [
+      "Hauteur sous plafond",
+      "Verrière",
+      "Cuisine ouverte",
+      "Parking",
+      "Sécurisé",
+    ],
     agent: {
       id: 2,
       name: "Jean Dupont",
@@ -143,7 +180,7 @@ export const mockProperties: Property[] = [
     description:
       "Magnifique penthouse avec vue panoramique sur la mer. Prestations haut de gamme et terrasse spacieuse.",
     location: "Cannes, France",
-    price: "1,200,000 €",
+    price: "1200000 FCFA",
     images: [
       "/placeholder.svg?height=300&width=400",
       "/placeholder.svg?height=300&width=400",
@@ -164,7 +201,7 @@ export const mockProperties: Property[] = [
       image: "/placeholder.svg?height=100&width=100",
     },
   },
-]
+];
 
 // Données mockées pour les agents
 export const mockAgents: Agent[] = [
@@ -178,7 +215,11 @@ export const mockAgents: Agent[] = [
     bio: "Sophie est spécialisée dans les propriétés de luxe et possède plus de 10 ans d'expérience dans l'immobilier parisien.",
     properties: 24,
     experience: 10,
-    specialization: ["Propriétés de luxe", "Appartements parisiens", "Investissements"],
+    specialization: [
+      "Propriétés de luxe",
+      "Appartements parisiens",
+      "Investissements",
+    ],
     socialMedia: {
       facebook: "https://facebook.com/sophiemartin",
       twitter: "https://twitter.com/sophiemartin",
@@ -222,7 +263,7 @@ export const mockAgents: Agent[] = [
       linkedin: "https://linkedin.com/in/marieleroy",
     },
   },
-]
+];
 
 // Données mockées pour les témoignages
 export const mockTestimonials: Testimonial[] = [
@@ -253,7 +294,7 @@ export const mockTestimonials: Testimonial[] = [
       "Le processus de location était transparent et efficace. J'ai trouvé un appartement qui correspond parfaitement à mes attentes.",
     rating: 4,
   },
-]
+];
 
 // Données mockées pour les plans d'appartements
 export const mockApartmentPlans: ApartmentPlan[] = [
@@ -307,7 +348,7 @@ export const mockApartmentPlans: ApartmentPlan[] = [
     balcony: "Autorisé",
     image: "/placeholder.svg?height=500&width=600",
   },
-]
+];
 
 // Données mockées pour les équipements
 export const mockAmenities: Amenity[] = [
@@ -315,43 +356,50 @@ export const mockAmenities: Amenity[] = [
     id: 1,
     title: "Espace de Stationnement",
     icon: "Car",
-    description: "Espaces de stationnement sécurisés disponibles pour tous les résidents et leurs invités.",
+    description:
+      "Espaces de stationnement sécurisés disponibles pour tous les résidents et leurs invités.",
   },
   {
     id: 2,
     title: "Piscine",
     icon: "Waves",
-    description: "Profitez de notre piscine luxueuse avec espace détente et jacuzzi.",
+    description:
+      "Profitez de notre piscine luxueuse avec espace détente et jacuzzi.",
   },
   {
     id: 3,
     title: "Sécurité Privée",
     icon: "Shield",
-    description: "Personnel de sécurité 24/7 et systèmes de surveillance avancés.",
+    description:
+      "Personnel de sécurité 24/7 et systèmes de surveillance avancés.",
   },
   {
     id: 4,
     title: "Centre Médical",
     icon: "Stethoscope",
-    description: "Installations médicales sur place pour les soins d'urgence et de routine.",
+    description:
+      "Installations médicales sur place pour les soins d'urgence et de routine.",
   },
   {
     id: 5,
     title: "Espace Bibliothèque",
     icon: "BookOpen",
-    description: "Espaces de lecture tranquilles avec une vaste collection de livres.",
+    description:
+      "Espaces de lecture tranquilles avec une vaste collection de livres.",
   },
   {
     id: 6,
     title: "Lits King Size",
     icon: "Bed",
-    description: "Lits king-size confortables dans toutes les chambres principales.",
+    description:
+      "Lits king-size confortables dans toutes les chambres principales.",
   },
   {
     id: 7,
     title: "Maisons Intelligentes",
     icon: "Home",
-    description: "Technologie de maison intelligente intégrée pour plus de confort et d'efficacité.",
+    description:
+      "Technologie de maison intelligente intégrée pour plus de confort et d'efficacité.",
   },
   {
     id: 8,
@@ -359,7 +407,7 @@ export const mockAmenities: Amenity[] = [
     icon: "Gamepad2",
     description: "Aires de jeux dédiées pour les enfants de tous âges.",
   },
-]
+];
 
 // Données mockées pour les statistiques
 export const mockStats: Stat[] = [
@@ -391,32 +439,36 @@ export const mockStats: Stat[] = [
     label: "Chambres Apartio",
     icon: "Bed",
   },
-]
+];
 
 // Données mockées pour les services
 export const mockServices: Service[] = [
   {
     id: 1,
     title: "Acheter une propriété",
-    description: "Trouvez la maison de vos rêves parmi notre large sélection de propriétés.",
+    description:
+      "Trouvez la maison de vos rêves parmi notre large sélection de propriétés.",
     icon: "Home",
   },
   {
     id: 2,
     title: "Vendre une propriété",
-    description: "Vendez votre propriété rapidement et au meilleur prix avec notre expertise.",
+    description:
+      "Vendez votre propriété rapidement et au meilleur prix avec notre expertise.",
     icon: "Key",
   },
   {
     id: 3,
     title: "Louer une propriété",
-    description: "Découvrez des options de location adaptées à vos besoins et à votre budget.",
+    description:
+      "Découvrez des options de location adaptées à vos besoins et à votre budget.",
     icon: "Search",
   },
   {
     id: 4,
     title: "Agents immobiliers",
-    description: "Nos agents expérimentés vous accompagnent dans toutes vos démarches immobilières.",
+    description:
+      "Nos agents expérimentés vous accompagnent dans toutes vos démarches immobilières.",
     icon: "Users",
   },
-]
+];
