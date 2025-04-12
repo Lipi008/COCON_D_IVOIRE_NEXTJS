@@ -23,6 +23,7 @@ import { Modal } from "./ui/modal";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useAuth } from "@/contexts/auth-context";
+import Image from "next/image";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -67,32 +68,52 @@ const Header = () => {
       >
         <div className="container-custom flex justify-between items-center">
           <div className="flex items-center">
+            {/* <Link href="/" className="flex items-center">
+            <motion.div
+              className="text-primary"
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 400, damping: 10 }}
+            >
+              <svg
+                width="40"
+                height="40"
+                viewBox="0 0 40 40"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M35 17.5V35H5V17.5L20 5L35 17.5Z"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  fill="none"
+                />
+                <path
+                  d="M15 25H25V35H15V25Z"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  fill="none"
+                />
+              </svg>
+              
+            </motion.div>
+            <span className="ml-2 text-2xl font-bold text-secondary">
+              Cocon d'ivoire
+            </span>
+          </Link> */}
+
             <Link href="/" className="flex items-center">
               <motion.div
                 className="text-primary"
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
               >
-                <svg
-                  width="40"
-                  height="40"
-                  viewBox="0 0 40 40"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M35 17.5V35H5V17.5L20 5L35 17.5Z"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    fill="none"
-                  />
-                  <path
-                    d="M15 25H25V35H15V25Z"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    fill="none"
-                  />
-                </svg>
+                <Image
+                  src="/images/logo.jpg"
+                  alt={"Logo"}
+                  width={40}
+                  height={40}
+                  className="w-10 h-10"
+                />
               </motion.div>
               <span className="ml-2 text-2xl font-bold text-secondary">
                 Cocon d'ivoire
@@ -115,28 +136,28 @@ const Header = () => {
             </Link>
 
             {/* <DropdownMenuCustom
-              trigger={
-                <div className="flex items-center font-medium hover:text-primary transition-colors duration-200">
-                  À propos <ChevronDown size={16} className="ml-1" />
-                </div>
-              }
-            >
-              <DropdownMenuItem>
-                <Link href="/about" className="w-full">
-                  À propos de nous
-                </Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <Link href="/about/team" className="w-full">
-                  Notre équipe
-                </Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <Link href="/about/history" className="w-full">
-                  Notre histoire
-                </Link>
-              </DropdownMenuItem>
-            </DropdownMenuCustom> */}
+            trigger={
+              <div className="flex items-center font-medium hover:text-primary transition-colors duration-200">
+                À propos <ChevronDown size={16} className="ml-1" />
+              </div>
+            }
+          >
+            <DropdownMenuItem>
+              <Link href="/about" className="w-full">
+                À propos de nous
+              </Link>
+            </DropdownMenuItem>
+            <DropdownMenuItem>
+              <Link href="/about/team" className="w-full">
+                Notre équipe
+              </Link>
+            </DropdownMenuItem>
+            <DropdownMenuItem>
+              <Link href="/about/history" className="w-full">
+                Notre histoire
+              </Link>
+            </DropdownMenuItem>
+          </DropdownMenuCustom> */}
 
             <DropdownMenuCustom
               trigger={
@@ -161,31 +182,31 @@ const Header = () => {
                 </Link>
               </DropdownMenuItem>
               {/* <DropdownMenuSeparator />
-              <DropdownMenuItem>
-                <Link href="/properties/map-view" className="w-full">
-                  Vue Carte
-                </Link>
-              </DropdownMenuItem> */}
+            <DropdownMenuItem>
+              <Link href="/properties/map-view" className="w-full">
+                Vue Carte
+              </Link>
+            </DropdownMenuItem> */}
             </DropdownMenuCustom>
 
             {/* <DropdownMenuCustom
-              trigger={
-                <div className="flex items-center font-medium hover:text-primary transition-colors duration-200">
-                  Actualités <ChevronDown size={16} className="ml-1" />
-                </div>
-              }
-            >
-              <DropdownMenuItem>
-                <Link href="/news" className="w-full">
-                  Actualités en grille
-                </Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <Link href="/news/list" className="w-full">
-                  Liste d'actualités
-                </Link>
-              </DropdownMenuItem>
-            </DropdownMenuCustom> */}
+            trigger={
+              <div className="flex items-center font-medium hover:text-primary transition-colors duration-200">
+                Actualités <ChevronDown size={16} className="ml-1" />
+              </div>
+            }
+          >
+            <DropdownMenuItem>
+              <Link href="/news" className="w-full">
+                Actualités en grille
+              </Link>
+            </DropdownMenuItem>
+            <DropdownMenuItem>
+              <Link href="/news/list" className="w-full">
+                Liste d'actualités
+              </Link>
+            </DropdownMenuItem>
+          </DropdownMenuCustom> */}
 
             <Link
               className="flex items-center font-medium hover:text-primary"
@@ -195,28 +216,28 @@ const Header = () => {
             </Link>
 
             {/* <DropdownMenuCustom
-              trigger={
-                <div className="flex items-center font-medium hover:text-primary transition-colors duration-200">
-                  Pages <ChevronDown size={16} className="ml-1" />
-                </div>
-              }
-            >
-              <DropdownMenuItem>
-                <Link href="/agents" className="w-full">
-                  Agents
-                </Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <Link href="/pricing" className="w-full">
-                  Tarifs
-                </Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <Link href="/faq" className="w-full">
-                  FAQ
-                </Link>
-              </DropdownMenuItem>
-            </DropdownMenuCustom> */}
+            trigger={
+              <div className="flex items-center font-medium hover:text-primary transition-colors duration-200">
+                Pages <ChevronDown size={16} className="ml-1" />
+              </div>
+            }
+          >
+            <DropdownMenuItem>
+              <Link href="/agents" className="w-full">
+                Agents
+              </Link>
+            </DropdownMenuItem>
+            <DropdownMenuItem>
+              <Link href="/pricing" className="w-full">
+                Tarifs
+              </Link>
+            </DropdownMenuItem>
+            <DropdownMenuItem>
+              <Link href="/faq" className="w-full">
+                FAQ
+              </Link>
+            </DropdownMenuItem>
+          </DropdownMenuCustom> */}
 
             <Link
               href="/contact"
