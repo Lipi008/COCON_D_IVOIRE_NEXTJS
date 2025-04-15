@@ -47,59 +47,6 @@ import type {
 //   return { data, isLoading, error, isUsingMock, refetch: fetchData }
 // }
 
-export function useApi<T>(
-  fetchFunction: () => Promise<ApiResponse<T>>,
-  dependencies: any[] = []
-) {
-  const [apiResponse, setApiResponse] = useState<ApiResponse<T> | null>(null);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [error, setError] = useState<Error | null>(null);
-  const [isUsingMock, setIsUsingMock] = useState<boolean>(false);
-
-  const fetchData = useCallback(async () => {
-    setIsLoading(true);
-    setError(null);
-
-    try {
-      const apiAvailable = await apiService.checkApiAvailability();
-      setIsUsingMock(!apiAvailable);
-
-      const response = await fetchFunction();
-
-      if (response.success) {
-        setApiResponse(response);
-        console.log("success");
-      } else {
-        setError(new Error(response.message || "Une erreur est survenue"));
-        setApiResponse(null);
-      }
-    } catch (err) {
-      setError(
-        err instanceof Error
-          ? err
-          : new Error("Une erreur inconnue est survenue")
-      );
-      setApiResponse(null);
-    } finally {
-      console.log("finally");
-      setIsLoading(false);
-    }
-  }, [fetchFunction]);
-
-  useEffect(() => {
-    fetchData();
-  }, [fetchData, ...dependencies]);
-
-  return {
-    data: apiResponse?.data || null,
-    pagination: apiResponse?.pagination,
-    isLoading,
-    error,
-    isUsingMock,
-    refetch: fetchData,
-  };
-}
-
 // export function useApi<T>(
 //   fetchFunction: () => Promise<ApiResponse<T>>,
 //   dependencies: any[] = []
@@ -121,8 +68,7 @@ export function useApi<T>(
 
 //       if (response.success) {
 //         setApiResponse(response);
-//         setIsLoading(false);
-//         console.log("success");
+//         // console.log("success");
 //       } else {
 //         setError(new Error(response.message || "Une erreur est survenue"));
 //         setApiResponse(null);
@@ -135,14 +81,14 @@ export function useApi<T>(
 //       );
 //       setApiResponse(null);
 //     } finally {
-//       console.log("fynally");
+//       // console.log("finally");
 //       setIsLoading(false);
 //     }
 //   }, [fetchFunction]);
 
 //   useEffect(() => {
 //     fetchData();
-//   }, [...dependencies, fetchData]);
+//   }, [fetchData, ...dependencies]);
 
 //   return {
 //     data: apiResponse?.data || null,
@@ -154,72 +100,61 @@ export function useApi<T>(
 //   };
 // }
 
-// export function useApi<T>(
-//   fetchFunction: () => Promise<ApiResponse<T>>,
-//   dependencies: any[] = []
-// ) {
-//   const [state, setState] = useState<{
-//     data: T | null;
-//     pagination?: Pagination;
-//     isLoading: boolean;
-//     error: Error | null;
-//     isUsingMock: boolean;
-//   }>({
-//     data: null,
-//     isLoading: true,
-//     error: null,
-//     isUsingMock: false,
-//   });
+export function useApi<T>(
+  fetchFunction: () => Promise<ApiResponse<T>>,
+  dependencies: any[] = []
+) {
+  const [apiResponse, setApiResponse] = useState<ApiResponse<T> | null>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [error, setError] = useState<Error | null>(null);
+  const [isUsingMock, setIsUsingMock] = useState<boolean>(false);
 
-//   // Mémoïsation stable de la fonction fetch
-//   const stableFetchFunction = useCallback(fetchFunction, dependencies);
+  // Stabilise la fonction fetch
+  const stableFetchFunction = useCallback(fetchFunction, dependencies);
 
-//   const fetchData = useCallback(async () => {
-//     // Annule les appels si déjà en chargement
-//     if (state.isLoading) return;
+  const fetchData = useCallback(async () => {
+    setIsLoading(true);
+    setError(null);
 
-//     setState((prev) => ({ ...prev, isLoading: true, error: null }));
+    try {
+      // Déplacez la vérification d'API ailleurs si possible
+      // ou mettez en cache le résultat
+      const apiAvailable = await apiService.checkApiAvailability();
+      setIsUsingMock(!apiAvailable);
 
-//     try {
-//       const [apiAvailable, response] = await Promise.all([
-//         apiService.checkApiAvailability(),
-//         stableFetchFunction(),
-//       ]);
+      const response = await stableFetchFunction();
 
-//       if (!response.success) {
-//         throw new Error(response.message || "Request failed");
-//       }
+      if (response.success) {
+        setApiResponse(response);
+      } else {
+        setError(new Error(response.message || "Une erreur est survenue"));
+        setApiResponse(null);
+      }
+    } catch (err) {
+      setError(
+        err instanceof Error
+          ? err
+          : new Error("Une erreur inconnue est survenue")
+      );
+      setApiResponse(null);
+    } finally {
+      setIsLoading(false);
+    }
+  }, [stableFetchFunction]); // Ne dépend que de la fonction stabilisée
 
-//       setState({
-//         data: response.data,
-//         pagination: response.pagination,
-//         isLoading: false,
-//         error: null,
-//         isUsingMock: !apiAvailable,
-//       });
-//     } catch (err) {
-//       setState((prev) => ({
-//         ...prev,
-//         isLoading: false,
-//         error: err instanceof Error ? err : new Error("Unknown error"),
-//       }));
-//     }
-//   }, [stableFetchFunction, state.isLoading]);
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]); // Dépendances déjà gérées dans stableFetchFunction
 
-//   // Contrôle strict des exécutions
-//   useEffect(() => {
-//     const controller = new AbortController();
-
-//     fetchData();
-
-//     return () => controller.abort();
-//   }, [fetchData]); // Seulement fetchData comme dépendance
-
-//   return {
-//     ...state,
-//     refetch: fetchData,
-//   };
-// }
+  return {
+    data: apiResponse?.data || null,
+    pagination: apiResponse?.pagination,
+    isLoading,
+    error,
+    isUsingMock,
+    refetch: fetchData,
+  };
+}
 
 /**
  * Hook pour récupérer toutes les propriétés
@@ -231,12 +166,10 @@ export function useApi<T>(
 //   );
 // }
 
-/*************  ✨ Windsurf Command ⭐  *************/
 /**
  * Hook pour récupérer les propriétés correspondant aux filtres.
  * @param {PropertyFilters} filters Filtres de recherche.
-
-/*******  120637c0-fae4-428d-bed7-769f16ae873c  *******/
+ */
 export function useProperties(filters?: PropertyFilters) {
   const fetchFunction = useCallback(() => {
     return apiService.getProperties(filters);
@@ -248,10 +181,13 @@ export function useProperties(filters?: PropertyFilters) {
 /**
  * Hook pour récupérer une propriété par son ID
  */
+// export function useProperty(id: string | number) {
+//   return useApi(() => apiService.getPropertyById(id), [id]);
+// }
 export function useProperty(id: string | number) {
-  return useApi(() => apiService.getPropertyById(id), [id]);
+  const fetchFunction = useCallback(() => apiService.getPropertyById(id), [id]);
+  return useApi(fetchFunction, [id]);
 }
-
 /**
  * Hook pour récupérer tous les agents
  */
@@ -318,11 +254,19 @@ export function usePropertySearch(query: string) {
 /**
  * Hook pour récupérer les propriétés similaires
  */
+// export function useSimilarProperties(propertyId: string | number) {
+//   return useApi(
+//     () => apiService.getSimilarProperties(propertyId),
+//     [propertyId]
+//   );
+// }
+
 export function useSimilarProperties(propertyId: string | number) {
-  return useApi(
+  const fetchFunction = useCallback(
     () => apiService.getSimilarProperties(propertyId),
     [propertyId]
   );
+  return useApi(fetchFunction, [propertyId]);
 }
 
 /**

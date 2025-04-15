@@ -16,7 +16,7 @@ export const mockProperties: Property[] = [
     description:
       "Belle maison familiale spacieuse au cœur de Westbury. Récemment rénovée avec nouveaux parquets, nouvelle cuisine, nouvelle salle de bain, nouveau toit et nouvelles fenêtres.",
     location: "Paris, France",
-    price: "450000 FCFA",
+    price: "450000",
     images: [
       "/placeholder.svg?height=300&width=400",
       "/placeholder.svg?height=300&width=400",
@@ -49,7 +49,7 @@ export const mockProperties: Property[] = [
     description:
       "Magnifique villa avec piscine et jardin paysager. Parfaite pour une famille à la recherche d'espace et de tranquillité.",
     location: "Nice, France",
-    price: "850000 FCFA",
+    price: "850000",
     images: [
       "/placeholder.svg?height=300&width=400",
       "/placeholder.svg?height=300&width=400",
@@ -82,8 +82,8 @@ export const mockProperties: Property[] = [
     description:
       "Studio moderne et lumineux, idéalement situé près des transports et commerces. Parfait pour un étudiant ou un jeune professionnel.",
     location: "Lyon, France",
-    price: "1,200 €",
-    period: "/mois",
+    price: "120000",
+    period: "mois",
     images: [
       "/placeholder.svg?height=300&width=400",
       "/placeholder.svg?height=300&width=400",
@@ -114,7 +114,7 @@ export const mockProperties: Property[] = [
     description:
       "Charmante maison de campagne avec grand jardin et dépendances. Idéale pour les amoureux de la nature et du calme.",
     location: "Bordeaux, France",
-    price: "320000 FCFA",
+    price: "320000",
     images: [
       "/placeholder.svg?height=300&width=400",
       "/placeholder.svg?height=300&width=400",
@@ -147,8 +147,8 @@ export const mockProperties: Property[] = [
     description:
       "Superbe loft industriel avec de grands volumes et beaucoup de caractère. Idéal pour les amateurs d'architecture contemporaine.",
     location: "Marseille, France",
-    price: "180000 FCFA",
-    period: "/mois",
+    price: "180000",
+    period: "mois",
     images: [
       "/placeholder.svg?height=300&width=400",
       "/placeholder.svg?height=300&width=400",
@@ -180,7 +180,7 @@ export const mockProperties: Property[] = [
     description:
       "Magnifique penthouse avec vue panoramique sur la mer. Prestations haut de gamme et terrasse spacieuse.",
     location: "Cannes, France",
-    price: "1200000 FCFA",
+    price: "1200000",
     images: [
       "/placeholder.svg?height=300&width=400",
       "/placeholder.svg?height=300&width=400",

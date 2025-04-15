@@ -230,7 +230,7 @@ class ApiService {
           for (const [key, value] of url.searchParams.entries()) {
             filters[key as keyof PropertyFilters] = value;
           }
-
+          console.log("Filters:", filters);
           // Appliquer les filtres
           if (filters.status) {
             filteredProperties = filteredProperties.filter(
